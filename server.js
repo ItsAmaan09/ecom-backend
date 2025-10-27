@@ -6,6 +6,9 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import restaurantRoutes from "./routes/restaurantRoutes.js";
 import menuRoutes from "./routes/menuRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+
 dotenv.config();
 connectDB();
 
@@ -20,6 +23,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/restaurants', restaurantRoutes);
 
 app.use('/api/menus', menuRoutes);
+
+app.use("/api/cart", cartRoutes);
+
+app.use("/api/orders", orderRoutes);
 
 app.use((err, req, res, next) => {
     res.status(500).json({message: err.message});
